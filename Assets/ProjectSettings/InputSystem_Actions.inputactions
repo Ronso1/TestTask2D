@@ -996,10 +996,10 @@
             "id": "4df26207-c223-4be9-947d-2de13dd7a114",
             "actions": [
                 {
-                    "name": "Touch",
+                    "name": "TouchPosition",
                     "type": "Value",
                     "id": "2c454ef1-b3cd-49a0-b263-8defb90f3dee",
-                    "expectedControlType": "Touch",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -1009,11 +1009,11 @@
                 {
                     "name": "",
                     "id": "72e6fc62-7d15-47b8-9e80-449674ca7a62",
-                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Touch",
+                    "action": "TouchPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

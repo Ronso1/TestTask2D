@@ -1018,10 +1018,10 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
             ""id"": ""4df26207-c223-4be9-947d-2de13dd7a114"",
             ""actions"": [
                 {
-                    ""name"": ""Touch"",
+                    ""name"": ""TouchPosition"",
                     ""type"": ""Value"",
                     ""id"": ""2c454ef1-b3cd-49a0-b263-8defb90f3dee"",
-                    ""expectedControlType"": ""Touch"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -1031,11 +1031,11 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""72e6fc62-7d15-47b8-9e80-449674ca7a62"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
-                    ""action"": ""Touch"",
+                    ""action"": ""TouchPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1130,7 +1130,7 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         // PlayerMobile
         m_PlayerMobile = asset.FindActionMap("PlayerMobile", throwIfNotFound: true);
-        m_PlayerMobile_Touch = m_PlayerMobile.FindAction("Touch", throwIfNotFound: true);
+        m_PlayerMobile_TouchPosition = m_PlayerMobile.FindAction("TouchPosition", throwIfNotFound: true);
     }
 
     ~@InputSystemActions()
@@ -1427,12 +1427,12 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
     // PlayerMobile
     private readonly InputActionMap m_PlayerMobile;
     private List<IPlayerMobileActions> m_PlayerMobileActionsCallbackInterfaces = new List<IPlayerMobileActions>();
-    private readonly InputAction m_PlayerMobile_Touch;
+    private readonly InputAction m_PlayerMobile_TouchPosition;
     public struct PlayerMobileActions
     {
         private @InputSystemActions m_Wrapper;
         public PlayerMobileActions(@InputSystemActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Touch => m_Wrapper.m_PlayerMobile_Touch;
+        public InputAction @TouchPosition => m_Wrapper.m_PlayerMobile_TouchPosition;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMobile; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1442,16 +1442,16 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerMobileActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerMobileActionsCallbackInterfaces.Add(instance);
-            @Touch.started += instance.OnTouch;
-            @Touch.performed += instance.OnTouch;
-            @Touch.canceled += instance.OnTouch;
+            @TouchPosition.started += instance.OnTouchPosition;
+            @TouchPosition.performed += instance.OnTouchPosition;
+            @TouchPosition.canceled += instance.OnTouchPosition;
         }
 
         private void UnregisterCallbacks(IPlayerMobileActions instance)
         {
-            @Touch.started -= instance.OnTouch;
-            @Touch.performed -= instance.OnTouch;
-            @Touch.canceled -= instance.OnTouch;
+            @TouchPosition.started -= instance.OnTouchPosition;
+            @TouchPosition.performed -= instance.OnTouchPosition;
+            @TouchPosition.canceled -= instance.OnTouchPosition;
         }
 
         public void RemoveCallbacks(IPlayerMobileActions instance)
@@ -1541,6 +1541,6 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
     }
     public interface IPlayerMobileActions
     {
-        void OnTouch(InputAction.CallbackContext context);
+        void OnTouchPosition(InputAction.CallbackContext context);
     }
 }
