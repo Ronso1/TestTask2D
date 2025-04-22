@@ -5,6 +5,8 @@ namespace Additions
 {
     public class PlayerInput : MonoBehaviour
     {
+        public event Event<Vector2> PlayerTouchStateChanged;
+
         private InputSystemActions _inputSystemActions;
         private Vector2 _cursorPosition;
 
@@ -36,7 +38,7 @@ namespace Additions
         private void OnPlayerTouchScreen(InputAction.CallbackContext context)
         {
             _cursorPosition = _inputSystemActions.PlayerMobile.TouchPosition.ReadValue<Vector2>();
-            print(_cursorPosition);
+            PlayerTouchStateChanged?.Invoke(_cursorPosition);
         }
     }
 }
