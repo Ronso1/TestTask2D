@@ -1003,6 +1003,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TouchAction",
+                    "type": "Value",
+                    "id": "f844eb1a-8427-4031-9a02-824629b8f014",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1014,6 +1023,17 @@
                     "processors": "",
                     "groups": ";Touch",
                     "action": "TouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6f65d48-237b-4a92-97d5-d72b3fda8943",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "TouchAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
