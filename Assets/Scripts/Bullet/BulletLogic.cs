@@ -1,40 +1,51 @@
 using System.Collections;
 using UnityEngine;
+using GameUI;
 
-public class BulletLogic : MonoBehaviour
+namespace Bullet
 {
-    [SerializeField] private float _bulletSpeed;
-    [SerializeField] private float _timeToDestroy;
-
-    private IBulletBehavior behavior;
-
-    public enum BulletType { Bouncing, Gravity }
-    public BulletType bulletType;
-
-    private void Start()
+    public class BulletLogic : MonoBehaviour
     {
-        switch (bulletType)
+        [SerializeField] private float _bulletSpeed;
+        [SerializeField] private float _timeToDestroy;
+
+        private SwapGunLogic _swapGunLogic;
+
+        private IBulletBehavior behavior;
+
+        public enum BulletType { Bouncing, Gravity }
+        public BulletType bulletType;
+
+        private void Awake()
         {
-            case BulletType.Bouncing:
-                behavior = new BouncingBulletBehavior();
-                break;
-            case BulletType.Gravity:
-                behavior = new GravityBulletBehavior();
-                break;
+            _swapGunLogic = GameObject.FindObjectOfType<SwapGunLogic>();
         }
 
-        StartCoroutine(DestroyBulletByLifeTime());
-        behavior?.Init(transform);
-    }
+        private void Start()
+        {
+            switch (_swapGunLogic.CurrentState)
+            {
+                case 0:
+                    behavior = new BouncingBulletBehavior();
+                    break;
+                case 1:
+                    behavior = new GravityBulletBehavior();
+                    break;
+            }
 
-    private void Update()
-    {
-        behavior?.Update();
-    }
+            StartCoroutine(DestroyBulletByLifeTime());
+            behavior?.Init(transform);
+        }
 
-    private IEnumerator DestroyBulletByLifeTime()
-    {
-        yield return new WaitForSeconds(_timeToDestroy);
-        Destroy(gameObject);
+        private void Update()
+        {
+            behavior?.Update();
+        }
+
+        private IEnumerator DestroyBulletByLifeTime()
+        {
+            yield return new WaitForSeconds(_timeToDestroy);
+            Destroy(gameObject);
+        }
     }
 }
