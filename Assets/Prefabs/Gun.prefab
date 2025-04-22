@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 356380883133149211}
   - component: {fileID: 6727890192300208491}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Scope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7621592360676131146}
+  - component: {fileID: 1931097616969135468}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -121,6 +122,22 @@ Transform:
   - {fileID: 356380883133149211}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1931097616969135468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695691708558036896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7641591ed3458434e86112753fd4baec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInput: {fileID: 0}
+  _camera: {fileID: 0}
+  _minClamp: -90
+  _maxClamp: 90
 --- !u!1 &3061260545854379319
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +149,7 @@ GameObject:
   - component: {fileID: 8776609118616918740}
   - component: {fileID: 6580767480081259352}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +236,7 @@ GameObject:
   - component: {fileID: 8456726177049766039}
   - component: {fileID: 3410306754635724118}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
