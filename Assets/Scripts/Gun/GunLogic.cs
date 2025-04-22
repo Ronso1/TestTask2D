@@ -51,10 +51,5 @@ namespace Gun
 
             transform.localRotation = Quaternion.Euler(0f, 0f, angle);
         }
-
-        private void ChangeGunState()
-        {
-
-        }
     }
 }

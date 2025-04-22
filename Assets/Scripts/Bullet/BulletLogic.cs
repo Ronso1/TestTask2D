@@ -26,10 +26,10 @@ namespace Bullet
             switch (_swapGunLogic.CurrentState)
             {
                 case 0:
-                    behavior = new BouncingBulletBehavior();
+                    behavior = new GravityBulletBehavior();
                     break;
                 case 1:
-                    behavior = new GravityBulletBehavior();
+                    behavior = new BouncingBulletBehavior();
                     break;
             }
 
